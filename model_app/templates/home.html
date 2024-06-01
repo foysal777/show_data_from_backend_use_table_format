@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Models.com</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body style="background-color: rgb(215, 214, 213);">
+    <h1 class="text-center m-5 text-success"> <u> This is Models page </u> </h1>
+
+    {% if data %}
+
+    <table class="table table-striped table-hover container">
+        <thead class="table-dark" >
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Roll</th>
+                <th scope="col">Adress</th>
+                <th scope="col">Father's Name</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            {% for st in data %}
+            <tr>
+                <td> {{st.name}} </td>
+                <td>{{st.roll}}</td>
+                <td>{{st.address}}</td>
+                <td>{{st.father_name}} </td>
+                <td> <a class="btn btn-success" href="{% url 'delete_student' st.roll  %}"> Delete </a> </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+    {% else %}
+    <h3> No data Found in database</h3>
+    {% endif %}
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
